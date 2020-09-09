@@ -71,6 +71,7 @@ def test_core_dns_metrics_are_collected(prometheus):
     assert len(parsed['data']['result']) > 0, \
         f"Expected to find a metric coredns_dns_request_count_total, but we got this response:\n\n{parsed}"
 
+## TODO: fix this test. it is failing in all environments, including CI, dev, staging, prod
 def test_houston_metrics_are_collected(prometheus):
     """ Ensure Houston metrics are collected and prefixed with 'houston_'
     """
