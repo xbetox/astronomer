@@ -29,13 +29,14 @@ get_kube_versions() {
     sort
 }
 
-while getopts ':hHI:kK:x' option ; do
+while getopts ':hHI:kK:Mx' option ; do
   case "${option}" in
     h) usage ; exit 0 ;;
     H) USE_HA=1 ;;
     I) export KIND_CREATE_ITERATIONS_MAX="${OPTARG}" ;;
     k) get_kube_versions ; exit 0 ;;
-    K) export KUBE_VERSION="${OPTARG/v/}" ;;
+    K) export KUBE_VERSION="${OPTARG}" ;;
+    M) export MULTI_NODE=1 ;;
     x) set -x ;;
     *) echo "ERROR: Unknown option: -${OPTARG}" ; usage ; exit 1 ;;
   esac
